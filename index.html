@@ -395,6 +395,70 @@
   </div>
 </section>
 
+<section id="contact">
+  <div class="container">
+    <span class="tag">Request a pilot</span>
+    <h2>Tell us about your project.</h2>
+    <p class="lead">We'll reply within one business day. No sales call unless you ask for one.</p>
+
+    <form action="https://formspree.io/f/xjygaedq" method="POST"
+          style="margin-top:32px;display:grid;gap:16px;max-width:640px;">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <label style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Name</span>
+          <input type="text" name="name" required
+                 style="background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--text);font-size:1rem;font-family:inherit;">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Work email</span>
+          <input type="email" name="email" required
+                 style="background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--text);font-size:1rem;font-family:inherit;">
+        </label>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <label style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Company</span>
+          <input type="text" name="company"
+                 style="background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--text);font-size:1rem;font-family:inherit;">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">Standard</span>
+          <select name="standard"
+                  style="background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--text);font-size:1rem;font-family:inherit;">
+            <option value="MISRA C:2012">MISRA C:2012</option>
+            <option value="MISRA C++:2023">MISRA C++:2023</option>
+            <option value="AUTOSAR C++14">AUTOSAR C++14</option>
+            <option value="CERT C">CERT C</option>
+            <option value="CWE Top 25">CWE Top 25</option>
+            <option value="Multiple / not sure">Multiple / not sure</option>
+          </select>
+        </label>
+      </div>
+
+      <label style="display:flex;flex-direction:column;gap:6px;">
+        <span style="font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;">What are you trying to solve?</span>
+        <textarea name="message" rows="5" required
+                  style="background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--text);font-size:1rem;font-family:inherit;resize:vertical;"></textarea>
+      </label>
+
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px;">
+        <button type="submit" class="btn btn-primary" style="border:0;cursor:pointer;font-family:inherit;">
+          Send request
+        </button>
+        <span style="color:var(--muted);font-size:.85rem;">
+          Goes to firmlint.contact@gmail.com
+        </span>
+      </div>
+
+      <!-- Hidden field to help Formspree label submissions -->
+      <input type="hidden" name="_subject" value="Firmlint pilot request">
+      <input type="hidden" name="_next" value="https://ibrarmohammed1137.github.io/firmlint-site/#thanks">
+    </form>
+  </div>
+</section>
+
 <footer>
   <p>© 2026 Firmlint. Static analysis, verified.</p>
   <p style="margin-top:8px;">Contact: <a href="mailto:hello@firmlint.com">hello@firmlint.com</a></p>
