@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs — Firmlint</title>
+<meta name="description" content="Get started with Firmlint: install the Docker image, run your first analysis, and read the report.">
+<meta name="theme-color" content="#0B1F3A">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6FG0R5WVNB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6FG0R5WVNB');
+</script>
+
+<link rel="canonical" href="https://ibrarmohammed1137.github.io/firmlint-site/docs.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230B1F3A'/><text x='50' y='68' font-size='60' font-family='system-ui' font-weight='800' fill='%2322C55E' text-anchor='middle'>F</text></svg>">
+
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --navy-2: #13294B;
+    --card: #132c52;
+    --line: #1e3a63;
+    --accent: #3B82F6;
+    --green: #22C55E;
+    --text: #E6EDF7;
+    --muted: #9FB0C8;
+    --warn: #F59E0B;
+    --code: #0a1a30;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--navy); color: var(--text); line-height: 1.6;
+  }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 12px; }
+  h2 { font-size: 1.6rem; margin-bottom: 16px; margin-top: 48px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 1.15rem; margin-bottom: 8px; margin-top: 28px; color: var(--green); }
+  p { color: var(--muted); margin-bottom: 16px; }
+  ul, ol { color: var(--muted); margin-left: 24px; margin-bottom: 16px; }
+  li { padding: 4px 0; }
+  code { background: var(--code); padding: 2px 6px; border-radius: 4px; font-family: Consolas, "Fira Code", monospace; font-size: .9em; color: var(--text); }
+  pre {
+    background: var(--code); border: 1px solid var(--line); border-radius: 8px;
+    padding: 16px; overflow-x: auto; font-family: Consolas, "Fira Code", monospace;
+    font-size: .9rem; line-height: 1.5; margin-bottom: 20px;
+  }
+  pre code { background: transparent; padding: 0; font-size: 1em; }
+  .tag {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    background: rgba(34,197,94,.15); color: var(--green); font-size: .85rem; margin-bottom: 16px;
+  }
+  .btn {
+    display: inline-block; padding: 12px 24px; border-radius: 8px; font-weight: 600;
+    border: 2px solid transparent; cursor: pointer; font-size: 1rem; transition: transform .15s, opacity .15s;
+  }
+  .btn:hover { transform: translateY(-2px); opacity: .92; text-decoration: none; }
+  .btn-primary { background: var(--green); color: var(--navy); }
+  .btn-outline { border-color: var(--accent); color: var(--text); }
+
+  header { position: sticky; top: 0; z-index: 10; background: rgba(11,31,58,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; max-width: 1100px; margin: 0 auto; }
+  .logo { font-weight: 800; font-size: 1.2rem; }
+  .logo span { color: var(--green); }
+  nav ul { display: flex; gap: 24px; list-style: none; margin: 0; }
+  nav ul a { color: var(--muted); }
+  nav ul a:hover { color: var(--text); text-decoration: none; }
+  nav ul a.active { color: var(--text); }
+  .btn-sm { padding: 8px 16px; font-size: .95rem; }
+
+  main { max-width: 800px; margin: 0 auto; padding: 60px 24px 100px; }
+
+  .callout {
+    background: rgba(59,130,246,.08); border-left: 4px solid var(--accent);
+    border-radius: 6px; padding: 16px 20px; margin: 20px 0;
+  }
+  .callout-warn {
+    background: rgba(245,158,11,.08); border-left: 4px solid var(--warn);
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .toc {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 20px 24px; margin-bottom: 40px;
+  }
+  .toc h3 { margin-top: 0; color: var(--text); font-size: .9rem; text-transform: uppercase; letter-spacing: .08em; }
+  .toc ul { margin: 12px 0 0 20px; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 20px; text-align: center; color: var(--muted); font-size: .9rem; }
+
+  @media (max-width: 800px) {
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="logo">Firm<span>lint</span></a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#how">How it works</a></li>
+      <li><a href="/#proof">Sample report</a></li>
+      <li><a href="/#try">Try it now</a></li>
+      <li><a href="/docs.html" class="active">Docs</a></li>
+      <li><a href="/#pilot">30-day pilot</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="/#contact">Book a pilot</a>
+  </nav>
+</header>
+
+<main>
+  <span class="tag">Documentation</span>
+  <h1>Getting started with Firmlint</h1>
+  <p style="font-size:1.1rem;">Everything you need to run your first analysis. 10 minutes start to finish.</p>
+
+  <div class="toc">
+    <h3>On this page</h3>
+    <ul>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#install">1 · Install the Docker image</a></li>
+      <li><a href="#first-run">2 · Run your first analysis</a></li>
+      <li><a href="#reading-report">3 · Reading the report</a></li>
+      <li><a href="#standards">4 · Choosing a standard</a></li>
+      <li><a href="#local-ai">5 · Enabling local AI (optional)</a></li>
+      <li><a href="#ci">6 · CI/CD integration</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+    </ul>
+  </div>
+
+  <h2 id="requirements">Requirements</h2>
+  <ul>
+    <li><strong>Docker</strong> installed and running (Desktop or Engine, any recent version)</li>
+    <li><strong>~2 GB</strong> free disk space for the image and cache</li>
+    <li>Your C or C++ source code on the local filesystem</li>
+    <li>(Optional) <strong>Ollama</strong> installed if you want the AI explanations to run locally</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>No cloud account needed.</strong> Firmlint runs entirely on your machine. No code leaves your workstation in the default configuration.</p>
+  </div>
+
+  <h2 id="install">1 · Install the Docker image</h2>
+  <p>Pull the image from GitHub Container Registry:</p>
+  <pre><code>$ docker pull ghcr.io/ibrarmohammed1137/misra-assistant:latest</code></pre>
+  <p>The image is public — no login required. Expect ~500 MB download.</p>
+
+  <h2 id="first-run">2 · Run your first analysis</h2>
+  <p>From your project directory, mount the current folder and pass a file to analyze:</p>
+  <pre><code>$ docker run --rm -v "$(pwd):/app" -w /app \
+    ghcr.io/ibrarmohammed1137/misra-assistant:latest \
+    python -m agent.run samples/demo.cpp --standard autosar-cpp14</code></pre>
+
+  <p>What the flags mean:</p>
+  <ul>
+    <li><code>-v "$(pwd):/app"</code> — mount your current directory into the container as <code>/app</code></li>
+    <li><code>-w /app</code> — set the working directory inside the container</li>
+    <li><code>--standard autosar-cpp14</code> — pick a rule set (see <a href="#standards">§4</a>)</li>
+  </ul>
+
+  <p>After the run, look in <code>./out/</code>. You'll find:</p>
+  <ul>
+    <li><code>report.html</code> — human-readable report</li>
+    <li><code>report.json</code> — machine-readable, includes SHA-256 of every file</li>
+    <li><code>report.sarif</code> — for IDE and CI integration</li>
+  </ul>
+
+  <div class="callout callout-warn">
+    <p><strong>Dry run first?</strong> Add <code>--dry-run</code> to see what would be analyzed without running the full analysis.</p>
+  </div>
+
+  <h2 id="reading-report">3 · Reading the report</h2>
+  <p>Open <code>out/report.html</code> in any browser. You'll see:</p>
+  <ul>
+    <li><strong>Summary</strong> — count of findings by priority (critical / high / medium / low)</li>
+    <li><strong>Reviewed findings</strong> — findings the AI has explained, each with:
+      <ul>
+        <li>Rule ID (e.g. <code>AUTOSAR A18-5-1</code>)</li>
+        <li>Location (file and line)</li>
+        <li>Analyzer source (cppcheck or clang-tidy)</li>
+        <li>Plain-English explanation</li>
+        <li>Risk statement</li>
+      </ul>
+    </li>
+    <li><strong>Other findings</strong> — violations found but outside the AI review limit</li>
+    <li><strong>Scope and evidence</strong> — tool versions, timestamps, SHA-256 of analyzed files</li>
+    <li><strong>Limitations</strong> — honest disclosure of what the report does and doesn't tell you</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>Fixes verified: 0</strong> is not an error. It means the tool did not find a fix it could verify. The tool will not claim verified work it hasn't actually verified.</p>
+  </div>
+
+  <h2 id="standards">4 · Choosing a standard</h2>
+  <p>Pass <code>--standard</code> to pick a rule set:</p>
+  <pre><code>--standard misra-c-2012       MISRA C:2012
+--standard misra-cpp-2023     MISRA C++:2023
+--standard autosar-cpp14      AUTOSAR C++14
+--standard cert-c             CERT C
+--standard cwe-top-25         CWE Top 25</code></pre>
+  <p>Run without <code>--standard</code> to use the default (MISRA C:2012 for <code>.c</code> files, AUTOSAR C++14 for <code>.cpp</code> files).</p>
+
+  <h2 id="local-ai">5 · Enabling local AI (optional)</h2>
+  <p>The deterministic layer (cppcheck, clang-tidy) works without any AI. To enable the AI explanations with <strong>local inference</strong>:</p>
+  <ol>
+    <li>Install <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> on your host machine</li>
+    <li>Pull a model: <code>ollama pull qwen2.5-coder:14b</code></li>
+    <li>Run the container with Ollama access:
+      <pre><code>$ docker run --rm -v "$(pwd):/app" -w /app \
+    --add-host=host.docker.internal:host-gateway \
+    -e OLLAMA_HOST=http://host.docker.internal:11434 \
+    ghcr.io/ibrarmohammed1137/misra-assistant:latest \
+    python -m agent.run samples/demo.cpp --standard autosar-cpp14</code></pre>
+    </li>
+  </ol>
+  <p>Your code still never leaves your machine — only local inference is used.</p>
+
+  <h2 id="ci">6 · CI/CD integration</h2>
+  <p>Add this step to your pipeline (GitHub Actions example):</p>
+  <pre><code>- name: Firmlint
+  run: |
+    docker pull ghcr.io/ibrarmohammed1137/misra-assistant:latest
+    docker run --rm -v "$PWD:/app" -w /app \
+      ghcr.io/ibrarmohammed1137/misra-assistant:latest \
+      python -m agent.run src/ --standard misra-c-2012
+
+- name: Upload report
+  uses: actions/upload-artifact@v4
+  with:
+    name: firmlint-report
+    path: out/</code></pre>
+  <p>The SARIF output (<code>out/report.sarif</code>) can be uploaded to GitHub's code-scanning tab directly.</p>
+
+  <h2 id="troubleshooting">Troubleshooting</h2>
+
+  <h3>Docker says "denied: denied"</h3>
+  <p>Your Docker daemon isn't authenticated to GHCR. Log out and pull again:</p>
+  <pre><code>$ docker logout ghcr.io
+$ docker pull ghcr.io/ibrarmohammed1137/misra-assistant:latest</code></pre>
+
+  <h3>Report has 0 findings but code should have violations</h3>
+  <p>Check the "Coverage" section in the report. It lists which rules fired. If your rule isn't in the rule database, it isn't checked. Partial coverage is expected — see the Limitations section.</p>
+
+  <h3>AI explanations are missing</h3>
+  <p>The AI layer is optional. If Ollama isn't running or reachable, findings will show the analyzer message but no explanation. See <a href="#local-ai">§5</a> to enable it.</p>
+
+  <h3>Container can't see my files</h3>
+  <p>Check the volume mount. On Windows, use <code>$(pwd)</code> in Git Bash or <code>${PWD}</code> in PowerShell. The path must be absolute.</p>
+
+  <h2>Still stuck?</h2>
+  <p>Email <a href="mailto:firmlint.contact@gmail.com">firmlint.contact@gmail.com</a> with:</p>
+  <ul>
+    <li>The exact command you ran</li>
+    <li>The full output (copy-paste, not a screenshot)</li>
+    <li>Your OS and Docker version</li>
+  </ul>
+  <p>We answer within one business day.</p>
+
+</main>
+
+<footer>
+  <p>© 2026 Firmlint. Static analysis, verified.</p>
+  <p style="margin-top:8px;">
+    <a href="/">Home</a> ·
+    <a href="/#try">Try it now</a> ·
+    <a href="/#pilot">30-day pilot</a> ·
+    <a href="mailto:firmlint.contact@gmail.com">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>
