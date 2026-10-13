@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing — Firmlint</title>
+<meta name="description" content="Simple, transparent pricing for Firmlint. Three tiers, 30-day pilot on your own code, no cloud charges, no data egress.">
+<meta name="theme-color" content="#0B1F3A">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6FG0R5WVNB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6FG0R5WVNB');
+</script>
+
+<link rel="canonical" href="https://ibrarmohammed1137.github.io/firmlint-site/pricing.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230B1F3A'/><text x='50' y='68' font-size='60' font-family='system-ui' font-weight='800' fill='%2322C55E' text-anchor='middle'>F</text></svg>">
+
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --navy-2: #13294B;
+    --card: #132c52;
+    --line: #1e3a63;
+    --accent: #3B82F6;
+    --green: #22C55E;
+    --text: #E6EDF7;
+    --muted: #9FB0C8;
+    --warn: #F59E0B;
+    --code: #0a1a30;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--navy); color: var(--text); line-height: 1.6;
+  }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  section { padding: 80px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.15; margin-bottom: 16px; }
+  h2 { font-size: 2rem; margin-bottom: 12px; line-height: 1.2; }
+  h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .lead { color: var(--muted); font-size: 1.12rem; max-width: 640px; margin: 0 auto; }
+  .muted { color: var(--muted); }
+  .tag {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    background: rgba(34,197,94,.15); color: var(--green); font-size: .85rem; margin-bottom: 16px;
+  }
+  .btn {
+    display: inline-block; padding: 12px 24px; border-radius: 8px; font-weight: 600;
+    border: 2px solid transparent; cursor: pointer; font-size: 1rem; transition: transform .15s, opacity .15s;
+    text-align: center;
+  }
+  .btn:hover { transform: translateY(-2px); opacity: .92; text-decoration: none; }
+  .btn-primary { background: var(--green); color: var(--navy); }
+  .btn-outline { border-color: var(--accent); color: var(--text); }
+
+  header { position: sticky; top: 0; z-index: 10; background: rgba(11,31,58,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; max-width: 1100px; margin: 0 auto; }
+  .logo { font-weight: 800; font-size: 1.2rem; }
+  .logo span { color: var(--green); }
+  nav ul { display: flex; gap: 24px; list-style: none; }
+  nav ul a { color: var(--muted); }
+  nav ul a:hover { color: var(--text); text-decoration: none; }
+  nav ul a.active { color: var(--text); }
+  .btn-sm { padding: 8px 16px; font-size: .95rem; }
+
+  .hero { text-align: center; padding-top: 80px; padding-bottom: 40px; }
+
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  @media (max-width: 900px) { .plans { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; } }
+
+  .plan {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 32px 28px; display: flex; flex-direction: column; position: relative;
+  }
+  .plan.featured {
+    border: 2px solid var(--green); transform: scale(1.03);
+  }
+  @media (max-width: 900px) { .plan.featured { transform: none; } }
+
+  .plan .badge-popular {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: var(--navy); font-size: .75rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: .08em;
+  }
+
+  .plan-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+  .plan-price { font-size: 2.6rem; font-weight: 800; color: var(--green); line-height: 1; }
+  .plan-unit { color: var(--muted); font-size: .9rem; margin-top: 6px; margin-bottom: 24px; }
+  .plan-seats { color: var(--muted); font-size: .95rem; padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+
+  .plan-features { list-style: none; flex: 1; }
+  .plan-features li { padding: 10px 0; color: var(--muted); font-size: .95rem; display: flex; gap: 10px; align-items: flex-start; }
+  .plan-features li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+  .plan-cta { margin-top: 24px; }
+
+  .pilot-note {
+    text-align: center; margin-top: 60px; padding: 32px 24px;
+    background: var(--navy-2); border: 1px solid var(--line); border-radius: 16px;
+  }
+  .pilot-note p { color: var(--muted); max-width: 720px; margin: 0 auto; }
+  .pilot-note strong { color: var(--text); }
+
+  .faq { margin-top: 80px; }
+  .faq details {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px 24px; margin-bottom: 12px;
+  }
+  .faq summary {
+    cursor: pointer; font-weight: 600; color: var(--text); list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  .faq summary::after { content: "+"; color: var(--green); font-size: 1.4rem; line-height: 1; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq details p { color: var(--muted); margin-top: 12px; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 20px; text-align: center; color: var(--muted); font-size: .9rem; }
+
+  @media (max-width: 800px) {
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="logo">Firm<span>lint</span></a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#how">How it works</a></li>
+      <li><a href="/#proof">Sample report</a></li>
+      <li><a href="/#try">Try it now</a></li>
+      <li><a href="/docs.html">Docs</a></li>
+      <li><a href="/pricing.html" class="active">Pricing</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="/#contact">Book a pilot</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="tag">Pricing</span>
+    <h1>Simple pricing. No hidden cloud charges.</h1>
+    <p class="lead">Three tiers. All plans include a 30-day pilot on your own code, on your own machine. No cloud, no data egress, no commitment.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="plans">
+
+      <!-- Team -->
+      <div class="plan">
+        <div class="plan-name">Team</div>
+        <div class="plan-price">€800</div>
+        <div class="plan-unit">per seat / year</div>
+        <div class="plan-seats">Up to 10 seats</div>
+        <ul class="plan-features">
+          <li>Self-deploy from the Docker image</li>
+          <li>Email support, 24-hour response</li>
+          <li>Sample report + documentation included</li>
+          <li>MISRA C:2012, MISRA C++:2023, AUTOSAR C++14</li>
+          <li>CERT C, CWE Top 25 checks</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn btn-outline" style="display:block;" href="/#contact">Start a 30-day pilot</a>
+        </div>
+      </div>
+
+      <!-- Department (featured) -->
+      <div class="plan featured">
+        <div class="badge-popular">Most popular</div>
+        <div class="plan-name">Department</div>
+        <div class="plan-price">€600</div>
+        <div class="plan-unit">per seat / year</div>
+        <div class="plan-seats">11–50 seats</div>
+        <ul class="plan-features">
+          <li>Everything in Team</li>
+          <li>Deployment support and CI integration</li>
+          <li>Priority email support</li>
+          <li>Custom rule database entries included</li>
+          <li>Quarterly review call with the engineering team</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn btn-primary" style="display:block;" href="/#contact">Start a 30-day pilot</a>
+        </div>
+      </div>
+
+      <!-- Site -->
+      <div class="plan">
+        <div class="plan-name">Site</div>
+        <div class="plan-price">€400</div>
+        <div class="plan-unit">per seat / year</div>
+        <div class="plan-seats">51–200 seats</div>
+        <ul class="plan-features">
+          <li>Everything in Department</li>
+          <li>On-site training (2 days)</li>
+          <li>Custom rule development</li>
+          <li>Integration with your existing toolchain</li>
+          <li>Named support engineer</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn btn-outline" style="display:block;" href="/#contact">Book a scoping call</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pilot-note">
+      <p><strong>All plans include a 30-day pilot on your own code, on your own machine.</strong><br>
+      No cloud, no data egress, no commitment. Success criteria agreed in writing before the pilot starts.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <h2 style="text-align:center;margin-bottom:32px;">Common questions</h2>
+
+      <details>
+        <summary>Why is your pricing lower than commercial tools?</summary>
+        <p>Because Firmlint uses open-source analyzers (cppcheck, clang-tidy) as the deterministic layer and adds the AI explanation and verification on top. We don't pay for a proprietary rules engine — we charge for the part we actually built.</p>
+      </details>
+
+      <details>
+        <summary>Does the price include updates?</summary>
+        <p>Yes. Your subscription covers updates to the Docker image, new rules, and improvements to the AI layer for the duration of the license.</p>
+      </details>
+
+      <details>
+        <summary>What about tool qualification under ISO 26262?</summary>
+        <p>Firmlint is a review aid, not a qualified tool. Reports include the evidence you need for a qualification argument — tool version, timestamps, SHA-256 of analyzed files — but the qualification itself remains your responsibility.</p>
+      </details>
+
+      <details>
+        <summary>Can we pay per project instead of per seat?</summary>
+        <p>For a single project with a small team, we can arrange a project license. Contact us with the details and we'll quote it.</p>
+      </details>
+
+      <details>
+        <summary>What if we don't have Docker?</summary>
+        <p>Docker is the only supported deployment method today. If your environment can't run Docker, tell us — we're evaluating native binaries and will prioritize based on demand.</p>
+      </details>
+
+      <details>
+        <summary>What happens if the pilot fails?</summary>
+        <p>You walk away. No further obligation, no payment. We agree the success criteria before the pilot starts so "success" and "failure" are both clear from day one.</p>
+      </details>
+
+      <details>
+        <summary>Where does the AI run?</summary>
+        <p>By default, locally via Ollama on your own workstation. Your source code never leaves your machine. If you prefer a cloud model, that's your choice — the tool supports both, but local is the default.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Firmlint. Static analysis, verified.</p>
+  <p style="margin-top:8px;">
+    <a href="/">Home</a> ·
+    <a href="/docs.html">Docs</a> ·
+    <a href="/#try">Try it now</a> ·
+    <a href="mailto:firmlint.contact@gmail.com">firmlint.contact@gmail.com</a>
+  </p>
+</footer>
+
+</body>
+</html>
