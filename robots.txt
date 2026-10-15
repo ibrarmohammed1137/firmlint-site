@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ibrarmohammed1137.github.io/firmlint-site/sitemap.xml
+Sitemap: https://firmlint.com/sitemap.xml
